@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS shorts;
+
+CREATE TABLE shorts(
+    id VARCHAR (20) PRIMARY KEY,
+    link VARCHAR (256) NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

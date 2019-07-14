@@ -1,0 +1,26 @@
+version: '3'
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      SHORTY_DB_HOST: db
+      SHORTY_DB_PASSWORD: shorty-password
+      SHORTY_DB_USER: shorty-user
+      SHORTY_DB_DATABASE_NAME: shorty
+    ports:
+      - '80:80'
+
+  db:
+    image: postgres:11.4
+    ports:
+      - '5432:5432'
+    expose:
+      - '5432'
+    environment:
+      POSTGRES_PASSWORD: shorty-password
+      POSTGRES_USER: shorty-user
+      POSTGRES_DB: shorty
+    volumes:
+      - ./db/init-scripts:/docker-entrypoint-initdb.d

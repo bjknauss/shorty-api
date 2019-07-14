@@ -4,7 +4,10 @@
   "description": "API Backend for the Shorty URL Shortener service.",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "watch": "nodemon src/index.js",
+    "pregen-db-init": "rimraf db/init-scripts/*",
+    "gen-db-init": "node db/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,10 +21,19 @@
   },
   "homepage": "https://github.com/bjknauss/shorty-api#readme",
   "dependencies": {
+    "convict": "^5.0.0",
+    "debug": "^4.1.1",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "is-url-http": "^1.2.0",
+    "js-yaml": "^3.13.1",
+    "pg": "^7.11.0",
+    "rimraf": "^2.6.3",
     "shortid": "^2.2.14"
   },
   "devDependencies": {
+    "faker": "^4.1.0",
     "husky": "^3.0.0",
     "lint-staged": "^9.2.0",
     "nodemon": "^1.19.1",
